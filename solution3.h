@@ -1,1 +1,0 @@
-std::string solution3(std::string input, int x);
