@@ -3,7 +3,7 @@
 ## Overview
 This solution pads groups of digits in a string with leading zeros to meet a minimum width, while leaving longer digit groups and all non-digit characters unchanged.
 
-**Final Approach**: Clean, single-pass string builder
+Clean, single-pass string builder
 
 ## Key Improvements
 - Simplified from multiple experimental versions to **one clean and efficient** solution
