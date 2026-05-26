@@ -22,14 +22,11 @@ FetchContent_Declare(
 set(BENCHMARK_ENABLE_TESTING OFF CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googlebenchmark)
 
-# Main solution
-add_executable(solution solution.cpp)
-
 # Tests
 enable_testing()
-add_executable(tests googleTest.cpp)
+add_executable(tests googleTest.cpp solution.cpp)
 target_link_libraries(tests GTest::gtest_main)
 
 # Benchmarks
-add_executable(benchmarks googleBenchMark.cpp)
+add_executable(benchmarks googleBenchMark.cpp solution.cpp)
 target_link_libraries(benchmarks benchmark::benchmark)
