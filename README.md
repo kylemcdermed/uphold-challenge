@@ -1,4 +1,4 @@
-# Uphold Coding Challenge - Digit Group Padding
+# Uphold Coding Challenge
 
 ## Overview
 This solution pads groups of digits in a string with leading zeros to meet a minimum width, while leaving longer digit groups and all non-digit characters unchanged.
