@@ -7,7 +7,6 @@ std::string padDigitGroups(std::string_view input, int width) {
         return std::string(input);
     }
 
-    // First pass: calculate extra zeros needed
     std::size_t extraZeros = 0;
     std::size_t i = 0;
     while (i < input.size()) {
