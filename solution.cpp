@@ -1,6 +1,7 @@
 #include <cctype>
 #include <string>
 #include <string_view>
+#include <cstring>   
 
 std::string padDigitGroups(std::string_view input, int width) {
     if (width <= 0) {
@@ -9,14 +10,16 @@ std::string padDigitGroups(std::string_view input, int width) {
 
     std::size_t extraZeros = 0;
     std::size_t i = 0;
-    while (i < input.size()) {
-        if (!std::isdigit(static_cast<unsigned char>(input[i]))) {
+    const std::size_t N = input.size();
+
+    while (i < N) {
+        if (input[i] < '0' || input[i] > '9') {
             ++i;
             continue;
         }
 
         std::size_t start = i;
-        while (i < input.size() && std::isdigit(static_cast<unsigned char>(input[i]))) {
+        while (i < N && input[i] >= '0' && input[i] <= '9') {
             ++i;
         }
 
@@ -31,28 +34,32 @@ std::string padDigitGroups(std::string_view input, int width) {
     }
 
     std::string output;
-    output.reserve(input.size() + extraZeros);
+    output.resize(N + extraZeros);
 
+    char* dst = output.data();
+    std::size_t pos = 0;
     i = 0;
-    while (i < input.size()) {
-        if (!std::isdigit(static_cast<unsigned char>(input[i]))) {
-            output.push_back(input[i]);
-            ++i;
+
+    while (i < N) {
+        if (input[i] < '0' || input[i] > '9') {
+            dst[pos++] = input[i++];
             continue;
         }
 
         std::size_t start = i;
-        while (i < input.size() && std::isdigit(static_cast<unsigned char>(input[i]))) {
+        while (i < N && input[i] >= '0' && input[i] <= '9') {
             ++i;
         }
 
         std::size_t digitCount = i - start;
 
         if (digitCount < static_cast<std::size_t>(width)) {
-            output.append(static_cast<std::size_t>(width) - digitCount, '0');
+            std::memset(dst + pos, '0', static_cast<std::size_t>(width) - digitCount);
+            pos += static_cast<std::size_t>(width) - digitCount;
         }
 
-        output.append(input.substr(start, digitCount));
+        std::memcpy(dst + pos, input.data() + start, digitCount);
+        pos += digitCount;
     }
 
     return output;
