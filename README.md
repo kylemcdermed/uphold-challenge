@@ -25,8 +25,8 @@ Two-pass exact allocation with direct buffer writing
 Google Test and Google Benchmark are used only for testing and benchmarking.
 
 ## Tests & Benchmarks
-- Full test coverage in `googleTest.cpp`
-- Benchmarks in `googleBenchMark.cpp`
+- `googleTest.cpp`
+- `googleBenchMark.cpp`
 
 ## Build & Run
 
