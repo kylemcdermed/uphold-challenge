@@ -3,9 +3,6 @@
 ## Overview
 This solution pads groups of digits in a string with leading zeros to meet a minimum width, while leaving longer digit groups and all non-digit characters unchanged.
 
-## Overview
-This solution pads groups of digits in a string with leading zeros to meet a minimum width, while leaving longer digit groups and all non-digit characters unchanged.
-
 Two-pass exact allocation with direct buffer writing
 
 ## Key Improvements
